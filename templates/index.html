@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://images.unsplash.com/photo-1582292102906-7cbb192b0c74?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background-color: #1e90ff;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0c70d4;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        strong {
+            color: #00ffcc;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            input[type="text"],
+            button {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌦️ Weather Forecast</h1>
+        <form method="post" action="/">
+            <input type="text" name="city" placeholder="Enter city name" required>
+            <button type="submit">Check Weather</button>
+        </form>
+
+        {% if data %}
+            <ul>
+                {% for key, value in data.items() %}
+                    <li><strong>{{ key }}:</strong> {{ value }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
